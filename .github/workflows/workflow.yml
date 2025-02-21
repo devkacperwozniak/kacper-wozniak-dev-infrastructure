@@ -1,0 +1,29 @@
+name: AWS OIDC Authentication
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - infrastructure
+
+jobs:
+  authenticate-to-aws:
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v4.1.0
+        with:
+          role-to-assume: arn:aws:iam::586794448788:role/arn:aws:iam::586794448788:role/github_full_2  
+          aws-region: eu-west-2
+          
+      - name: Verify AWS CLI Configuration
+        run: aws sts get-caller-identity
