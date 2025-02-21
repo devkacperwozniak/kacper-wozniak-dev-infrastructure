@@ -22,7 +22,7 @@ jobs:
       - name: Set up AWS CLI
         uses: aws-actions/configure-aws-credentials@v4.1.0
         with:
-          role-to-assume: arn:aws:iam::586794448788:role/arn:aws:iam::586794448788:role/github_full_2  
+          role-to-assume: arn:aws:iam::586794448788:role/github_full_2
           aws-region: eu-west-2
           
       - name: Verify AWS CLI Configuration
