@@ -12,5 +12,5 @@ terraform {
     bucket = "terraform-states-5455"
     key    = "kacper-wozniak-dev-infrastructure/terraform.tfstate"
     region = "eu-west-3"
-  } 
+  }
 }
