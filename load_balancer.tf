@@ -37,3 +37,16 @@ resource "aws_lb_listener" "ecs_load_balancer_http" {
     target_group_arn = aws_lb_target_group.ecs_lb_target_group.arn
   }
 }
+
+resource "aws_lb_listener" "ecs_load_balancer_https" {
+  load_balancer_arn = aws_lb.ecs_load_balancer.arn
+  port              = 443
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-2016-08"
+  certificate_arn   = aws_acm_certificate.kacperwozniak_dev.arn
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.ecs_lb_target_group.arn
+  }
+}
